@@ -2,12 +2,14 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public Rigidbody2D rb;
+    private Rigidbody2D rb;
+    private Animator anim;
+
 
     [Header("Particles")]
-   //[SerializeField] private ParticleSystem dustFX;
-   //[SerializeField] private GameObject landing;
-   //[SerializeField] private GameObject jumpHitFX;
+    //[SerializeField] private ParticleSystem dustFX;
+    //[SerializeField] private GameObject landing;
+    //[SerializeField] private GameObject jumpHitFX;
     //private float dustFxTimer;
 
     [Header("Move info")]
@@ -16,7 +18,7 @@ public class Player : MonoBehaviour
     public float doubleJumpForce;
     public Vector2 wallJumpDirection;
     public float maxfallSpeed;
-    [SerializeField] private float wallSlideSpeed = 2f;
+    [SerializeField] private float wallSlideSpeed;
     [SerializeField] private float cayoteJumpTime;
     [SerializeField] private float bufferJumpTime;
     private float bufferJumpCounter;
@@ -41,7 +43,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float knockbackProtectionTime;
 
 
-    private float hInput;
+    //private float hInput;
+    private float movingInput;
     private bool isKnocked;
     private bool canBeKnocked = true;
     private bool canDoubleJump = true;
@@ -50,68 +53,94 @@ public class Player : MonoBehaviour
     public bool isGrounded;
     private bool isWallDetected;
     private bool canWallSlide;
-    private bool isWallSliding;
+    private bool isWallSliding; 
     private bool justWallJumped;
     private bool isLandingOnEnemy;
     private bool canJumpOnEnemy = true;
     private bool facingRight = true;
-    private int facingDirection =1;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private int facingDirection = 1;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
     void Update()
     {
+        AnimationsConrollers();
         CollisionChecks();
         FlipController();
-            
-            
-        // Move input
-        hInput = Input.GetAxisRaw("Horizontal");
+        InputChecks();
 
-        // Jump input
-        if (Input.GetButtonDown("Jump"))
-        {
-            Jump();
-        }
-
-        // Check grounded state
-        //isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+        canMove = true;
 
         if (isGrounded)
         {
             canDoubleJump = true;
         }
+
+        if (canWallSlide)
+        {
+            isWallSliding = true;
+            //rb.linearVelocity = new Vector2(rb.linearVelocity.x, -wallSlideSpeed);
+        }
+        else
+        {
+            isWallSliding = false;
+        }
+
+        Move();
     }
-      private void FixedUpdate()
+
+    private void AnimationsConrollers()
     {
-        // Move left/right
-        rb.linearVelocity = new Vector2(hInput * moveSpeed, rb.linearVelocity.y);
+        bool isMoving = rb.linearVelocity.x != 0;
+        anim.SetBool("isGrounded", isGrounded);
+        anim.SetBool("isMoving", isMoving);
+        anim.SetFloat("yVelocity", rb.linearVelocity.y);
+        anim.SetBool("isWallSliding", isWallSliding);
+        anim.SetBool("isWallDetected", isWallDetected);
     }
-   
+    private void InputChecks()
+    {
+    
+        movingInput = Input.GetAxisRaw("Horizontal");
+
+        if (Input.GetAxis("Vertical") < 0)
+            canWallSlide = false;
+
+        if (Input.GetButtonDown("Jump"))
+            {
+                Jump();
+            }
+    }
+
     private void Move()
     {
-        if (canMove)
+        if(canMove)
         {
-            rb.linearVelocity = new Vector2(moveSpeed * hInput, rb.linearVelocity.y);
+            rb.linearVelocity = new Vector2(moveSpeed * movingInput, rb.linearVelocity.y);
+        }
+
+        if (isWallSliding && rb.linearVelocity.y < -wallSlideSpeed)
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, -wallSlideSpeed);
         }
     }
+
     private void WallJump()
     {
-        //canMove = false;
         justWallJumped = true;
         rb.linearVelocity = new Vector2(wallJumpDirection.x * -facingDirection, wallJumpDirection.y);
-        //dustFX.Play();
     }
-     private void Jump()
-    {   
-        canHaveCayoteJump = false;
-        cayoteJumpCounter =-1;
 
-       if (isGrounded)
+    private void Jump()
+    {
+        canHaveCayoteJump = false;
+        cayoteJumpCounter = -1;
+
+        if (isGrounded)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         }
@@ -121,14 +150,16 @@ public class Player : MonoBehaviour
             canDoubleJump = false;
         }
 
-        //dustFX.Play();
+        if (isWallSliding)
+        {
+            WallJump();
+        }
     }
-     private void FlipController()
+
+    private void FlipController()
     {
         if (justWallJumped)
             return;
-
-        //dustFxTimer -= Time.deltaTime;
 
         if (facingRight && rb.linearVelocity.x < 0)
         {
@@ -139,27 +170,43 @@ public class Player : MonoBehaviour
             Flip();
         }
     }
-      private void Flip()
-    {  
 
-        // if(dustFxTimer < 0)
-        // {
-        //     dustFX.Play();
-        //     dustFxTimer = .7f;
-        // }
-        facingDirection = facingDirection * -1; 
+    private void Flip()
+    {
+        facingDirection = facingDirection * -1;
         facingRight = !facingRight;
         transform.Rotate(0, 180, 0);
     }
+
+    private void KnockBack()
+    {
+        if (!canBeKnocked)
+            return;
+
+        isKnocked = true;
+        canBeKnocked = false;
+        rb.linearVelocity = new Vector2(knockbackDirection.x, knockbackDirection.y);
+        canMove = false;
+    }
+
     private void CollisionChecks()
     {
         isGrounded = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, groundLayer);
         isWallDetected = Physics2D.Raycast(transform.position, Vector2.right * facingDirection, wallCheckDistance, whatIsWall);
+
+        canWallSlide = isWallDetected && !isGrounded && rb.linearVelocity.y < 0;
+
+        if(!isWallDetected)
+        {
+            isWallSliding = false;
+            canWallSlide = false;
+        }
     }
+
     private void OnDrawGizmos()
     {
         Gizmos.DrawLine(transform.position, new Vector3(transform.position.x, transform.position.y - groundCheckDistance));
-        Gizmos.DrawLine(transform.position, new Vector3(transform.position.x * wallCheckDistance * facingDirection, transform.position.y));
+        Gizmos.DrawLine(transform.position, new Vector3(transform.position.x + wallCheckDistance * facingDirection, transform.position.y));
 
         Gizmos.DrawWireSphere(enemyCheck.position, enemyCheckRadius);
         Vector2 boxSize = new Vector2(enemyCheckJumpWidth, enemyCheckJumpHeight);
