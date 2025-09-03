@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -18,10 +19,9 @@ public class Player : MonoBehaviour
     public float doubleJumpForce;
     public Vector2 wallJumpDirection;
     public float maxfallSpeed;
-    [SerializeField] private float wallSlideSpeed;
-    [SerializeField] private float cayoteJumpTime;
     [SerializeField] private float bufferJumpTime;
     private float bufferJumpCounter;
+    [SerializeField] private float cayoteJumpTime;
     private float cayoteJumpCounter;
     private bool canHaveCayoteJump;
     private float flipDelayTimer;
@@ -29,7 +29,9 @@ public class Player : MonoBehaviour
     [Header("Collision info")]
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask whatIsWall;
+    [SerializeField] private Transform groundCheck;
     [SerializeField] private float groundCheckDistance;
+    [SerializeField] private Transform wallCheck;
     [SerializeField] private float wallCheckDistance;
     [SerializeField] private Transform enemyCheck;
     [SerializeField] private float enemyCheckRadius;
@@ -64,6 +66,7 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        
     }
 
     void Update()
@@ -75,15 +78,34 @@ public class Player : MonoBehaviour
 
         canMove = true;
 
+        bufferJumpCounter -= Time.deltaTime;
+        cayoteJumpCounter -= Time.deltaTime;
+
         if (isGrounded)
         {
             canDoubleJump = true;
+            canMove = true;
+
+            if (bufferJumpCounter > 0)
+            {
+                bufferJumpCounter = -1;
+                Jump();
+            }
+
+            canHaveCayoteJump = true;
+        }
+        else
+        {   if (canHaveCayoteJump)
+            {
+                canHaveCayoteJump = false;
+                cayoteJumpCounter = cayoteJumpTime;
+            }
         }
 
         if (canWallSlide)
         {
             isWallSliding = true;
-            //rb.linearVelocity = new Vector2(rb.linearVelocity.x, -wallSlideSpeed);
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.1f);
         }
         else
         {
@@ -112,7 +134,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetButtonDown("Jump"))
             {
-                Jump();
+                JumpButton();
             }
     }
 
@@ -122,16 +144,34 @@ public class Player : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(moveSpeed * movingInput, rb.linearVelocity.y);
         }
-
-        if (isWallSliding && rb.linearVelocity.y < -wallSlideSpeed)
-        {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, -wallSlideSpeed);
-        }
     }
+    private void JumpButton()
+    {
+        if (!isGrounded)
+            bufferJumpCounter = bufferJumpTime;
 
+        if (isWallSliding)
+            {
+                WallJump();
+                canDoubleJump = true;
+            }
+            else if (isGrounded || cayoteJumpCounter > 0)
+            {
+                Jump();
+            }
+            else if (canDoubleJump)
+            {
+                canMove = true;
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, doubleJumpForce);
+                canDoubleJump = false;
+            }
+
+        canWallSlide = false;
+    }
     private void WallJump()
     {
-        justWallJumped = true;
+        canMove = false; 
+        //justWallJumped = true;
         rb.linearVelocity = new Vector2(wallJumpDirection.x * -facingDirection, wallJumpDirection.y);
     }
 
@@ -140,26 +180,14 @@ public class Player : MonoBehaviour
         canHaveCayoteJump = false;
         cayoteJumpCounter = -1;
 
-        if (isGrounded)
-        {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-        }
-        else if (canDoubleJump)
-        {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, doubleJumpForce);
-            canDoubleJump = false;
-        }
-
-        if (isWallSliding)
-        {
-            WallJump();
-        }
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+      
     }
 
     private void FlipController()
     {
-        if (justWallJumped)
-            return;
+        // if (justWallJumped)
+        //     return;
 
         if (facingRight && rb.linearVelocity.x < 0)
         {
@@ -205,8 +233,8 @@ public class Player : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawLine(transform.position, new Vector3(transform.position.x, transform.position.y - groundCheckDistance));
-        Gizmos.DrawLine(transform.position, new Vector3(transform.position.x + wallCheckDistance * facingDirection, transform.position.y));
+        Gizmos.DrawLine(groundCheck.position, new Vector3(groundCheck.position.x, groundCheck.position.y - groundCheckDistance));
+        Gizmos.DrawLine(wallCheck.position, new Vector3(wallCheck.position.x + wallCheckDistance * facingDirection, wallCheck.position.y));
 
         Gizmos.DrawWireSphere(enemyCheck.position, enemyCheckRadius);
         Vector2 boxSize = new Vector2(enemyCheckJumpWidth, enemyCheckJumpHeight);
