@@ -1,4 +1,5 @@
 using System;
+using UnityEditor.Tilemaps;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -26,6 +27,17 @@ public class Player : MonoBehaviour
     private bool canHaveCayoteJump;
     private float flipDelayTimer;
 
+    [Header("Glide info")]
+    [SerializeField] private float glidingSpeed;
+     public float initalGravityScale;
+     private float glideExitBuffer = 0.1f;
+    private float glideExitTimer;
+
+    [Header("Attack info")]
+    [SerializeField] private float groundPoundForce = -20f;
+    private bool isAttacking;
+    private bool isGroundPounding;
+
     [Header("Collision info")]
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask whatIsWall;
@@ -46,6 +58,7 @@ public class Player : MonoBehaviour
 
 
     //private float hInput;
+    
     private float movingInput;
     private bool isKnocked;
     private bool canBeKnocked = true;
@@ -56,6 +69,8 @@ public class Player : MonoBehaviour
     private bool isWallDetected;
     private bool canWallSlide;
     private bool isWallSliding; 
+    public bool isGliding;
+    public bool isGlideButtonHeld;
     private bool justWallJumped;
     private bool isLandingOnEnemy;
     private bool canJumpOnEnemy = true;
@@ -81,10 +96,13 @@ public class Player : MonoBehaviour
         bufferJumpCounter -= Time.deltaTime;
         cayoteJumpCounter -= Time.deltaTime;
 
+        //Ground Movement
         if (isGrounded)
         {
             canDoubleJump = true;
             canMove = true;
+            isGliding = false;
+            rb.gravityScale = initalGravityScale;
 
             if (bufferJumpCounter > 0)
             {
@@ -95,13 +113,14 @@ public class Player : MonoBehaviour
             canHaveCayoteJump = true;
         }
         else
-        {   if (canHaveCayoteJump)
+        {
+            if (canHaveCayoteJump)
             {
                 canHaveCayoteJump = false;
                 cayoteJumpCounter = cayoteJumpTime;
             }
         }
-
+        //WallSlide
         if (canWallSlide)
         {
             isWallSliding = true;
@@ -112,6 +131,21 @@ public class Player : MonoBehaviour
             isWallSliding = false;
         }
 
+        //Attack
+        if (isGrounded && isGroundPounding)
+        {
+            isGroundPounding = false;
+            isAttacking = false;
+            anim.ResetTrigger("DownAttack");
+        }
+
+        // Reset Attacks
+        if (isAttacking && anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
+        {
+            isAttacking = false;
+        }
+        HandleAttack();
+        HandleGlide();
         Move();
     }
 
@@ -123,24 +157,85 @@ public class Player : MonoBehaviour
         anim.SetFloat("yVelocity", rb.linearVelocity.y);
         anim.SetBool("isWallSliding", isWallSliding);
         anim.SetBool("isWallDetected", isWallDetected);
+        anim.SetBool("isGliding", isGliding);
     }
     private void InputChecks()
     {
-    
+        //Move
         movingInput = Input.GetAxisRaw("Horizontal");
 
         if (Input.GetAxis("Vertical") < 0)
             canWallSlide = false;
 
+        //Jump
         if (Input.GetButtonDown("Jump"))
-            {
-                JumpButton();
-            }
+        {
+            JumpButton();
+        }
+
+        //Glide
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            isGlideButtonHeld = true;
+        }
+        if (Input.GetKeyUp(KeyCode.H))
+        {
+            isGlideButtonHeld = false;
+            isGliding = false;
+            rb.gravityScale = initalGravityScale;
+        }
+        
+        //Attack inputs are in HandleAttack Logic
     }
+    private void HandleGlide()
+    {
+    
+        if (!isGrounded && !isWallSliding && !isWallDetected && isGlideButtonHeld && rb.linearVelocity.y < -0.1f)
+        {
+            if (!isGliding) 
+            {
+                isGliding = true;
+                rb.gravityScale = 0;
+            }
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, -glidingSpeed);
+        }
+        else
+        {
+            if (isGliding) 
+            {
+                isGliding = false;
+                rb.gravityScale = initalGravityScale;
+            }
+        }
+    }
+
+    private void HandleAttack()
+    {
+    if (Input.GetKeyDown(KeyCode.K))
+    {
+        //Up Attack
+        if (Input.GetKey(KeyCode.W))
+            {
+                anim.SetTrigger("UpAttack");
+                Debug.Log("Up attack triggered");
+            }
+            else if (Input.GetKey(KeyCode.S) && !isGrounded) // Down attack only in air
+            {
+                anim.SetTrigger("DownAttack");
+                Debug.Log("Down attack triggered");
+            }
+            else // Straight attack
+            {
+                anim.SetTrigger("Attack");
+                Debug.Log("Straight attack triggered");
+            }
+        }
+    }
+
 
     private void Move()
     {
-        if(canMove)
+        if (canMove)
         {
             rb.linearVelocity = new Vector2(moveSpeed * movingInput, rb.linearVelocity.y);
         }

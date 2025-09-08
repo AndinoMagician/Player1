@@ -881,10 +881,11 @@ GameObject:
   - component: {fileID: 1224621358}
   - component: {fileID: 1224621357}
   - component: {fileID: 1224621355}
-  - component: {fileID: 1224621359}
   - component: {fileID: 1224621361}
   - component: {fileID: 1224621360}
-  m_Layer: 0
+  - component: {fileID: 1224621359}
+  - component: {fileID: 1224621362}
+  m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -982,7 +983,7 @@ Transform:
   m_GameObject: {fileID: 1224621354}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.68, y: -1.54, z: 0}
+  m_LocalPosition: {x: -6.76, y: -4.36, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1011,6 +1012,9 @@ MonoBehaviour:
   maxfallSpeed: 50
   bufferJumpTime: 0.1
   cayoteJumpTime: 0.2
+  glidingSpeed: 3
+  initalGravityScale: 6
+  groundPoundForce: -20
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -1030,6 +1034,8 @@ MonoBehaviour:
   knockbackTime: 0
   knockbackProtectionTime: 0
   isGrounded: 0
+  isGliding: 0
+  isGlideButtonHeld: 0
 --- !u!95 &1224621360
 Animator:
   serializedVersion: 7
@@ -1089,6 +1095,18 @@ CapsuleCollider2D:
   m_Offset: {x: 0.024562955, y: -0.3438816}
   m_Size: {x: 1.0491259, y: 1.6877632}
   m_Direction: 0
+--- !u!114 &1224621362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1224621354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1511ccae7919cfc46b603b9b337fdc94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1848129363
 GameObject:
   m_ObjectHideFlags: 0
