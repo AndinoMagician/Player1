@@ -1,3 +1,4 @@
+using System.Collections;
 using System;
 using UnityEditor.Tilemaps;
 using UnityEngine;
@@ -34,9 +35,17 @@ public class Player : MonoBehaviour
     private float glideExitTimer;
 
     [Header("Attack info")]
-    [SerializeField] private float groundPoundForce = -20f;
+    [SerializeField] private float groundPoundForce;
     private bool isAttacking;
     private bool isGroundPounding;
+
+    [Header("Dash info")]
+    [SerializeField] private float dashSpeed = 20f;       
+    [SerializeField] private float dashDuration = 0.2f;   
+    [SerializeField] private float dashCooldown = 0.5f;   
+    private bool isDashing;
+    private float dashTimer;
+    private float dashCooldownTimer;
 
     [Header("Collision info")]
     [SerializeField] private LayerMask groundLayer;
@@ -95,6 +104,25 @@ public class Player : MonoBehaviour
 
         bufferJumpCounter -= Time.deltaTime;
         cayoteJumpCounter -= Time.deltaTime;
+
+        if (dashCooldownTimer > 0) dashCooldownTimer -= Time.deltaTime;
+        if (isDashing)
+        {
+            dashTimer -= Time.deltaTime;
+            if (dashTimer <= 0f)
+            {
+                isDashing = false;
+                canMove = true; 
+            }
+        }
+
+        if (!isDashing)
+        {
+            canMove = true;
+        }
+
+        if (!isDashing && rb.gravityScale == 0) rb.gravityScale = initalGravityScale;
+
 
         //Ground Movement
         if (isGrounded)
@@ -174,18 +202,25 @@ public class Player : MonoBehaviour
         }
 
         //Glide
-        if (Input.GetKeyDown(KeyCode.H))
+        if (Input.GetKeyDown(KeyCode.J))
         {
             isGlideButtonHeld = true;
         }
-        if (Input.GetKeyUp(KeyCode.H))
+        if (Input.GetKeyUp(KeyCode.J))
         {
             isGlideButtonHeld = false;
             isGliding = false;
             rb.gravityScale = initalGravityScale;
         }
-        
+
         //Attack inputs are in HandleAttack Logic
+
+        //Dash
+        if (Input.GetKeyDown(KeyCode.I) && dashCooldownTimer <= 0f && !isDashing)
+        {
+            StartDash();
+        }
+
     }
     private void HandleGlide()
     {
@@ -222,6 +257,7 @@ public class Player : MonoBehaviour
             else if (Input.GetKey(KeyCode.S) && !isGrounded) // Down attack only in air
             {
                 anim.SetTrigger("DownAttack");
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, groundPoundForce);
                 Debug.Log("Down attack triggered");
             }
             else // Straight attack
@@ -232,10 +268,22 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void StartDash()
+    {
+        anim.SetTrigger("isDashing");
+        isDashing = true;
+        dashTimer = dashDuration;
+        dashCooldownTimer = dashCooldown;
+
+        canMove = false;
+        rb.gravityScale = 0;
+        rb.linearVelocity = new Vector2(facingDirection * dashSpeed, 0f);
+
+    }
 
     private void Move()
     {
-        if (canMove)
+        if (canMove && !isDashing)
         {
             rb.linearVelocity = new Vector2(moveSpeed * movingInput, rb.linearVelocity.y);
         }
