@@ -102,17 +102,19 @@ public class Player : MonoBehaviour
 
         canMove = true;
 
+        //Counters 
         bufferJumpCounter -= Time.deltaTime;
         cayoteJumpCounter -= Time.deltaTime;
 
         if (dashCooldownTimer > 0) dashCooldownTimer -= Time.deltaTime;
+        //Dash
         if (isDashing)
         {
             dashTimer -= Time.deltaTime;
             if (dashTimer <= 0f)
             {
                 isDashing = false;
-                canMove = true; 
+                canMove = true;
             }
         }
 
@@ -159,7 +161,7 @@ public class Player : MonoBehaviour
             isWallSliding = false;
         }
 
-        //Attack
+        //DownAttack
         if (isGrounded && isGroundPounding)
         {
             isGroundPounding = false;
@@ -216,7 +218,7 @@ public class Player : MonoBehaviour
         //Attack inputs are in HandleAttack Logic
 
         //Dash
-        if (Input.GetKeyDown(KeyCode.I) && dashCooldownTimer <= 0f && !isDashing)
+        if (Input.GetKeyDown(KeyCode.L) && dashCooldownTimer <= 0f && !isDashing)
         {
             StartDash();
         }
@@ -252,18 +254,15 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.W))
             {
                 anim.SetTrigger("UpAttack");
-                Debug.Log("Up attack triggered");
             }
             else if (Input.GetKey(KeyCode.S) && !isGrounded) // Down attack only in air
             {
                 anim.SetTrigger("DownAttack");
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, groundPoundForce);
-                Debug.Log("Down attack triggered");
             }
             else // Straight attack
             {
                 anim.SetTrigger("Attack");
-                Debug.Log("Straight attack triggered");
             }
         }
     }
