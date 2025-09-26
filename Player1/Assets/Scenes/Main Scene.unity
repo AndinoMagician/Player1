@@ -1817,9 +1817,10 @@ MonoBehaviour:
   enemyCheckJump: {fileID: 26856729}
   enemyCheckJumpWidth: 2
   enemyCheckJumpHeight: 1
-  knockbackDirection: {x: 0, y: 0}
-  knockbackTime: 0
-  knockbackProtectionTime: 0
+  knockbackForceX: 10
+  knockbackForceY: 10
+  knockbackTime: 0.2
+  knockbackProtectionTime: 0.2
   isGrounded: 0
   isGliding: 0
   isGlideButtonHeld: 0
@@ -2820,7 +2821,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!61 &1988444281
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2851,7 +2852,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -2943,7 +2944,7 @@ Transform:
   m_GameObject: {fileID: 1988444280}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.98, y: -3.01, z: 0}
+  m_LocalPosition: {x: 3.93, y: -4.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

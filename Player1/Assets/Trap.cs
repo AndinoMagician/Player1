@@ -1,16 +1,14 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-
 public class Trap : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+  private void OnTriggerEnter2D(Collider2D collision)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Player player = collision.GetComponent<Player>();
+        if (player != null)
+        {
+            player.KnockBack(transform);
+        }
     }
 }

@@ -1,0 +1,489 @@
+fileFormatVersion: 2
+guid: 670a2bf5d4651495e85fb9e17546ad59
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6648004305242981426
+    second: BillyKnocked_0
+  - first:
+      213: 4964285342006350812
+    second: BillyKnocked_1
+  - first:
+      213: 4231174594340627857
+    second: BillyKnocked_2
+  - first:
+      213: -5513907073365078226
+    second: BillyKnocked_3
+  - first:
+      213: -2025155597976505198
+    second: BillyKnocked_4
+  - first:
+      213: 4774269451585434029
+    second: BillyKnocked_5
+  - first:
+      213: -1378007990231223938
+    second: BillyKnocked_6
+  - first:
+      213: -1720815848975548483
+    second: BillyKnocked_7
+  - first:
+      213: 2039987294039516557
+    second: BillyKnocked_8
+  - first:
+      213: -1941903572564408210
+    second: BillyKnocked_9
+  - first:
+      213: -5113135678160525870
+    second: BillyKnocked_10
+  - first:
+      213: -1986743115996073206
+    second: BillyKnocked_11
+  - first:
+      213: -4878950544875349491
+    second: BillyKnocked_12
+  - first:
+      213: -4985893358722401475
+    second: BillyKnocked_13
+  - first:
+      213: 5660599718246615385
+    second: BillyKnocked_14
+  - first:
+      213: -8623796769253188825
+    second: BillyKnocked_15
+  - first:
+      213: -8708711002586362659
+    second: BillyKnocked_16
+  - first:
+      213: -4855261589543915567
+    second: BillyKnocked_17
+  - first:
+      213: -6162931979435120815
+    second: BillyKnocked_18
+  - first:
+      213: 8823049035754812446
+    second: BillyKnocked_19
+  - first:
+      213: 255282029069061054
+    second: BillyKnocked_20
+  - first:
+      213: 7893065499466464716
+    second: BillyKnocked_21
+  - first:
+      213: -6426048578635624608
+    second: BillyKnocked_22
+  - first:
+      213: 3154646161449837100
+    second: BillyKnocked_23
+  - first:
+      213: 4032744542149885705
+    second: BillyKnocked_24
+  - first:
+      213: -6491523960167339164
+    second: BillyKnocked_25
+  - first:
+      213: -3789548474004628197
+    second: BillyKnocked_26
+  - first:
+      213: -9009664713525059902
+    second: BillyKnocked_27
+  - first:
+      213: -8544598391960244703
+    second: BillyKnocked_28
+  - first:
+      213: -4162712716150571227
+    second: BillyKnocked_29
+  - first:
+      213: -8684628958474247880
+    second: BillyKnocked_30
+  - first:
+      213: 6330443333957512634
+    second: BillyKnocked_31
+  - first:
+      213: -739639112505460502
+    second: BillyKnocked_32
+  - first:
+      213: 4074804215159955668
+    second: BillyKnocked_33
+  - first:
+      213: 287779253548394678
+    second: BillyKnocked_34
+  - first:
+      213: 5029093022979684725
+    second: BillyKnocked_35
+  - first:
+      213: 3897914563363843696
+    second: BillyKnocked_36
+  - first:
+      213: 8135457396508562944
+    second: BillyKnocked_37
+  - first:
+      213: -2573547976917692632
+    second: BillyKnocked_38
+  - first:
+      213: -24169071296169495
+    second: BillyKnocked_39
+  - first:
+      213: -6961096813299740443
+    second: BillyKnocked_40
+  - first:
+      213: -5391387636108370137
+    second: BillyKnocked_41
+  - first:
+      213: -2695638791344062898
+    second: BillyKnocked_42
+  - first:
+      213: -6451670878985723370
+    second: BillyKnocked_43
+  - first:
+      213: 9033254426757261265
+    second: BillyKnocked_44
+  - first:
+      213: -4156523120759703975
+    second: BillyKnocked_45
+  - first:
+      213: 4678186131057407250
+    second: BillyKnocked_46
+  - first:
+      213: 6014095343103674610
+    second: BillyKnocked_47
+  - first:
+      213: 3918074133065697751
+    second: BillyKnocked_48
+  - first:
+      213: -4687495367195214135
+    second: BillyKnocked_49
+  - first:
+      213: 2517539286719191092
+    second: BillyKnocked_50
+  - first:
+      213: -5062603843878330635
+    second: BillyKnocked_51
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 150
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Win64
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: VisionOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: tvOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: BillyKnocked_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1032
+        width: 928
+        height: 516
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7e59a3d2f2b148e78e4952ae5fbdc68
+      internalID: 145647702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BillyKnocked_3
+      rect:
+        serializedVersion: 2
+        x: 928
+        y: 1032
+        width: 928
+        height: 516
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec7b6fcf972574cfd8e4e37f9f5fb001
+      internalID: -81430129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BillyKnocked_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 516
+        width: 928
+        height: 516
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b341238b7cdd8450c98f585fbdecb96a
+      internalID: -1868661713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BillyKnocked_4
+      rect:
+        serializedVersion: 2
+        x: 928
+        y: 516
+        width: 928
+        height: 516
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7b654dadabad4806abea290147ec83a
+      internalID: 1016850589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BillyKnocked_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 928
+        height: 516
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49671744cc3254127817dd99fb18960e
+      internalID: 28151644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BillyKnocked_5
+      rect:
+        serializedVersion: 2
+        x: 928
+        y: 0
+        width: 928
+        height: 516
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9cd2a345c8c4e4ea7be1b2422320594a
+      internalID: -823040616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 0959eed62e0f44240a13ad7fed86a6a9
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      BillyKnocked_0: 145647702
+      BillyKnocked_1: -1868661713
+      BillyKnocked_2: 28151644
+      BillyKnocked_3: -81430129
+      BillyKnocked_4: 1016850589
+      BillyKnocked_5: -823040616
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

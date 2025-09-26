@@ -61,16 +61,18 @@ public class Player : MonoBehaviour
     [SerializeField] private float enemyCheckJumpHeight = 1f;
 
     [Header("Knockback info")]
-    [SerializeField] private Vector2 knockbackDirection;
-    [SerializeField] private float knockbackTime;
-    [SerializeField] private float knockbackProtectionTime;
+    [SerializeField] private float knockbackForceX = 8f;
+    [SerializeField] private float knockbackForceY = 5f;
+    [SerializeField] private float knockbackTime = 0.2f;
+    [SerializeField] private float knockbackProtectionTime = 1f;
+
+    private bool isKnocked;
+    private bool canBeKnocked = true;
 
 
     //private float hInput;
     
     private float movingInput;
-    private bool isKnocked;
-    private bool canBeKnocked = true;
     private bool canDoubleJump = true;
     private bool canMove;
     private bool readyToLand;
@@ -118,10 +120,14 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (!isDashing)
+        if (!isKnocked && canMove && !isDashing)
         {
-            canMove = true;
+            Move();
         }
+        // if (!isDashing)
+        //     {
+        //         canMove = true;
+        //     }
 
         if (!isDashing && rb.gravityScale == 0) rb.gravityScale = initalGravityScale;
 
@@ -188,6 +194,7 @@ public class Player : MonoBehaviour
         anim.SetBool("isWallSliding", isWallSliding);
         anim.SetBool("isWallDetected", isWallDetected);
         anim.SetBool("isGliding", isGliding);
+        anim.SetBool("isKnocked", isKnocked);
     }
     private void InputChecks()
     {
@@ -282,7 +289,7 @@ public class Player : MonoBehaviour
 
     private void Move()
     {
-        if (canMove && !isDashing)
+        if (!isKnocked && canMove && !isDashing)
         {
             rb.linearVelocity = new Vector2(moveSpeed * movingInput, rb.linearVelocity.y);
         }
@@ -331,6 +338,8 @@ public class Player : MonoBehaviour
         // if (justWallJumped)
         //     return;
 
+        if (isKnocked) return; 
+
         if (facingRight && rb.linearVelocity.x < 0)
         {
             Flip();
@@ -348,15 +357,34 @@ public class Player : MonoBehaviour
         transform.Rotate(0, 180, 0);
     }
 
-    private void KnockBack()
+    public void KnockBack(Transform trap)
     {
-        if (!canBeKnocked)
-            return;
+        if (!canBeKnocked) return;
 
-        isKnocked = true;
         canBeKnocked = false;
-        rb.linearVelocity = new Vector2(knockbackDirection.x, knockbackDirection.y);
+        isKnocked = true;
         canMove = false;
+
+        // Determine horizontal direction: +1 if player is left of trap, -1 if right
+        float direction = (transform.position.x < trap.position.x) ? -1f : 1f;
+
+        // Apply velocity
+        rb.linearVelocity = new Vector2(direction * knockbackForceX, knockbackForceY);
+
+        // Start the recovery coroutine
+        StartCoroutine(KnockbackRoutine());
+    }
+
+    private IEnumerator KnockbackRoutine()
+    {
+        yield return new WaitForSeconds(knockbackTime);
+        isKnocked = false;
+        canMove = true;
+        
+
+        // Extra protection time before next knockback
+        yield return new WaitForSeconds(knockbackProtectionTime);
+        canBeKnocked = true;
     }
 
     private void CollisionChecks()
