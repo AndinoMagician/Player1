@@ -36,8 +36,13 @@ public class Player : MonoBehaviour
 
     [Header("Attack info")]
     [SerializeField] private float groundPoundForce;
+    private GameObject attackArea = default;
     private bool isAttacking;
     private bool isGroundPounding;
+    private bool attacking = false;
+    private bool attackStarted = false;
+    private float timeToAttack = 0.25f;
+    private float timer = 0f;
 
     [Header("Dash info")]
     [SerializeField] private float dashSpeed = 20f;       
@@ -92,6 +97,7 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        attackArea = transform.GetChild(0).gameObject;
         
     }
 
@@ -101,6 +107,9 @@ public class Player : MonoBehaviour
         CollisionChecks();
         FlipController();
         InputChecks();
+        CheckForEnemyJump();
+        CheckForEnemy();
+    
 
         canMove = true;
 
@@ -165,6 +174,23 @@ public class Player : MonoBehaviour
         else
         {
             isWallSliding = false;
+        }
+        
+        //Attacking
+        if (attacking)
+        {
+            timer += Time.deltaTime;
+
+            if (timer >= timeToAttack)
+            {
+                timer = 0;
+                attacking = false;
+                // isCrunch = false;
+                attackStarted = false;
+                attackArea.SetActive(false);
+            }
+
+
         }
 
         //DownAttack
@@ -257,19 +283,22 @@ public class Player : MonoBehaviour
     {
     if (Input.GetKeyDown(KeyCode.K))
     {
-        //Up Attack
-        if (Input.GetKey(KeyCode.W))
+            //Up Attack
+            if (Input.GetKey(KeyCode.W))
             {
                 anim.SetTrigger("UpAttack");
+                OnAttack();
             }
             else if (Input.GetKey(KeyCode.S) && !isGrounded) // Down attack only in air
             {
                 anim.SetTrigger("DownAttack");
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, groundPoundForce);
+                OnAttack();
             }
             else // Straight attack
             {
                 anim.SetTrigger("Attack");
+                OnAttack();
             }
         }
     }
@@ -386,6 +415,79 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(knockbackProtectionTime);
         canBeKnocked = true;
     }
+    public void CheckForEnemyJump()
+        {
+            if (rb.linearVelocity.y < 0 || isGliding)
+            {
+            // Define the size of the box
+            Vector2 boxSize = new Vector2(enemyCheckJumpWidth, enemyCheckJumpHeight);
+
+            // Perform the box overlap check
+            Collider2D[] hitColliders = Physics2D.OverlapBoxAll(enemyCheckJump.position, boxSize, 0f);
+
+            foreach (var collider in hitColliders)
+            {
+            // Check if the collider has an Enemy component
+            if (collider.GetComponent<Enemy>() != null)
+                {
+                    Enemy newEnemy = collider.GetComponent<Enemy>();
+
+                    if (isGliding)
+                    {
+                        isGliding = false;
+                    }
+                    Jump();
+
+                    canBeKnocked = false;
+
+                    //return Knockback
+                    StartCoroutine(KnockbackRoutine());
+
+                }
+            }
+        }
+    }
+
+    private void CheckForEnemy()
+ {
+    // Perform circle overlap check
+    Collider2D[] hitColliders = Physics2D.OverlapCircleAll(enemyCheck.position, enemyCheckRadius);
+
+    foreach (var hit in hitColliders)
+    {
+        if (hit.CompareTag("Enemy") && attacking)
+        {
+            Enemy enemyScript = hit.GetComponent<Enemy>();
+                if (enemyScript != null)
+                {
+                    enemyScript.DestroyEnemy();
+                }
+        }
+    }
+}
+
+    public void OnAttack()
+    {
+        if(!attackStarted && !isWallDetected)
+        {
+            attackArea.SetActive(true);
+
+            if (isGrounded)
+            {
+              attacking = true;
+                    attackStarted = true;
+                    timer = 0f;
+                    CheckForEnemy();
+            }     
+
+            if (isWallDetected)
+            {   
+                attacking = false;
+                attackArea.SetActive(false);          
+            }
+        
+        }
+    }
 
     private void CollisionChecks()
     {
@@ -394,7 +496,7 @@ public class Player : MonoBehaviour
 
         canWallSlide = isWallDetected && !isGrounded && rb.linearVelocity.y < 0;
 
-        if(!isWallDetected)
+        if (!isWallDetected)
         {
             isWallSliding = false;
             canWallSlide = false;
