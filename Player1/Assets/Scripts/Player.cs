@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject landing;
     [SerializeField] private Transform landingFX;
 
-    //[SerializeField] private GameObject jumpHitFX;
+   
     private float dustFxTimer;
 
     [Header("Move info")]
