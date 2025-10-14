@@ -10,15 +10,18 @@ public class Player : MonoBehaviour
 
 
     [Header("Particles")]
-    //[SerializeField] private ParticleSystem dustFX;
-    //[SerializeField] private GameObject landing;
+    [SerializeField] private ParticleSystem dustFX;
+    [SerializeField] private GameObject landing;
+    [SerializeField] private Transform landingFX;
+
     //[SerializeField] private GameObject jumpHitFX;
-    //private float dustFxTimer;
+    private float dustFxTimer;
 
     [Header("Move info")]
     public float moveSpeed;
     public float jumpForce;
-    public float doubleJumpForce;
+    //public float doubleJumpForce;
+    
     public Vector2 wallJumpDirection;
     public float maxfallSpeed;
     [SerializeField] private float bufferJumpTime;
@@ -30,9 +33,10 @@ public class Player : MonoBehaviour
 
     [Header("Glide info")]
     [SerializeField] private float glidingSpeed;
-     public float initalGravityScale;
-     private float glideExitBuffer = 0.1f;
+    public float initalGravityScale;
+    private float glideExitBuffer = 0.1f;
     private float glideExitTimer;
+    private bool canStartGlide;
 
     [Header("Attack info")]
     [SerializeField] private float groundPoundForce;
@@ -51,6 +55,8 @@ public class Player : MonoBehaviour
     private bool isDashing;
     private float dashTimer;
     private float dashCooldownTimer;
+    [Header("Jump control")]
+    [SerializeField] private float jumpCutMultiplier = 0.5f;
 
     [Header("Collision info")]
     [SerializeField] private LayerMask groundLayer;
@@ -78,7 +84,7 @@ public class Player : MonoBehaviour
     //private float hInput;
     
     private float movingInput;
-    private bool canDoubleJump = true;
+    //private bool canDoubleJump = true;
     private bool canMove;
     private bool readyToLand;
     public bool isGrounded;
@@ -92,12 +98,14 @@ public class Player : MonoBehaviour
     private bool canJumpOnEnemy = true;
     private bool facingRight = true;
     private int facingDirection = 1;
+    private ScreenShake screenShake;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         attackArea = transform.GetChild(0).gameObject;
+        screenShake = Camera.main.GetComponent<ScreenShake>();
         
     }
 
@@ -107,9 +115,15 @@ public class Player : MonoBehaviour
         CollisionChecks();
         FlipController();
         InputChecks();
+
         CheckForEnemyJump();
         CheckForEnemy();
-    
+
+        // Variable jump height control
+        // if (Input.GetButtonUp("Jump") && rb.linearVelocity.y > 0 && !isGliding)
+        // {
+        //     rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * jumpCutMultiplier);
+        // }
 
         canMove = true;
 
@@ -118,6 +132,7 @@ public class Player : MonoBehaviour
         cayoteJumpCounter -= Time.deltaTime;
 
         if (dashCooldownTimer > 0) dashCooldownTimer -= Time.deltaTime;
+
         //Dash
         if (isDashing)
         {
@@ -133,18 +148,13 @@ public class Player : MonoBehaviour
         {
             Move();
         }
-        // if (!isDashing)
-        //     {
-        //         canMove = true;
-        //     }
 
         if (!isDashing && rb.gravityScale == 0) rb.gravityScale = initalGravityScale;
-
 
         //Ground Movement
         if (isGrounded)
         {
-            canDoubleJump = true;
+            //canDoubleJump = true;
             canMove = true;
             isGliding = false;
             rb.gravityScale = initalGravityScale;
@@ -156,6 +166,13 @@ public class Player : MonoBehaviour
             }
 
             canHaveCayoteJump = true;
+             
+             //landing effect
+            if(readyToLand)
+            {
+                Landing();
+                readyToLand = false;
+            }
         }
         else
         {
@@ -163,6 +180,11 @@ public class Player : MonoBehaviour
             {
                 canHaveCayoteJump = false;
                 cayoteJumpCounter = cayoteJumpTime;
+            }
+             
+            if(!readyToLand)
+            {
+                readyToLand = true;
             }
         }
         //WallSlide
@@ -230,27 +252,61 @@ public class Player : MonoBehaviour
         if (Input.GetAxis("Vertical") < 0)
             canWallSlide = false;
 
-        //Jump
+        // Jump pressed
         if (Input.GetButtonDown("Jump"))
         {
-            JumpButton();
+            // If grounded or within coyote time — normal jump
+            if (isGrounded || isWallSliding || cayoteJumpCounter > 0)
+            {
+                JumpButton();
+                canStartGlide = false; // reset glide ability until jump is released
+            }
+            else if (!isGrounded && canStartGlide && rb.linearVelocity.y < 0 && !isWallSliding)
+            {
+                // Pressing jump again midair (while falling) starts gliding
+                isGlideButtonHeld = true;
+            }
         }
 
-        //Glide
-        if (Input.GetKeyDown(KeyCode.J))
+        // Jump released
+        if (Input.GetButtonUp("Jump"))
         {
-            isGlideButtonHeld = true;
-        }
-        if (Input.GetKeyUp(KeyCode.J))
-        {
+            // Allow glide on next press once released after a jump
+            canStartGlide = true;
+
+            // Stop gliding if currently gliding
             isGlideButtonHeld = false;
-            isGliding = false;
-            rb.gravityScale = initalGravityScale;
+            if (isGliding)
+            {
+                isGliding = false;
+                rb.gravityScale = initalGravityScale;
+            }
+
+            // Variable jump height control
+            if (rb.linearVelocity.y > 0 && !isGliding)
+            {
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * jumpCutMultiplier);
+            }
         }
 
-        //Attack inputs are in HandleAttack Logic
 
-        //Dash
+        // //Jump
+        // if (Input.GetButtonDown("Jump"))
+        // {
+        //     JumpButton();
+        // }
+
+
+        //  // When jump is held midair, start gliding
+        // if (Input.GetButton("Jump") && !isGrounded && rb.linearVelocity.y < -0.1f && !isWallSliding)
+        // {
+        //     isGlideButtonHeld = true;
+        // }
+        // else
+        // {
+        //     isGlideButtonHeld = false;
+        // }
+  
         if (Input.GetKeyDown(KeyCode.L) && dashCooldownTimer <= 0f && !isDashing)
         {
             StartDash();
@@ -260,23 +316,37 @@ public class Player : MonoBehaviour
     private void HandleGlide()
     {
     
-        if (!isGrounded && !isWallSliding && !isWallDetected && isGlideButtonHeld && rb.linearVelocity.y < -0.1f)
+        // if (!isGrounded && !isWallSliding && !isWallDetected && isGlideButtonHeld && rb.linearVelocity.y < -0.1f)
+        // {
+        //     if (!isGliding) 
+        //     {
+        //         isGliding = true;
+        //         rb.gravityScale = 0;
+        //     }
+        // rb.linearVelocity = new Vector2(rb.linearVelocity.x, -glidingSpeed);
+        // }
+        // else
+        // {
+        //     if (isGliding) 
+        //     {
+        //         isGliding = false;
+        //         rb.gravityScale = initalGravityScale;
+        //     }
+        // }
+        if (isGlideButtonHeld)
         {
-            if (!isGliding) 
+            if (!isGliding)
             {
                 isGliding = true;
                 rb.gravityScale = 0;
             }
-        rb.linearVelocity = new Vector2(rb.linearVelocity.x, -glidingSpeed);
-        }
-        else
-        {
-            if (isGliding) 
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, -glidingSpeed);
+            }
+            else if (isGliding)
             {
                 isGliding = false;
                 rb.gravityScale = initalGravityScale;
             }
-        }
     }
 
     private void HandleAttack()
@@ -314,6 +384,10 @@ public class Player : MonoBehaviour
         rb.gravityScale = 0;
         rb.linearVelocity = new Vector2(facingDirection * dashSpeed, 0f);
 
+        //ScreenShake
+        if (screenShake != null)
+        StartCoroutine(screenShake.Shake(0.05f, 0.05f));
+
     }
 
     private void Move()
@@ -331,17 +405,11 @@ public class Player : MonoBehaviour
         if (isWallSliding)
             {
                 WallJump();
-                canDoubleJump = true;
+                
             }
             else if (isGrounded || cayoteJumpCounter > 0)
             {
                 Jump();
-            }
-            else if (canDoubleJump)
-            {
-                canMove = true;
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x, doubleJumpForce);
-                canDoubleJump = false;
             }
 
         canWallSlide = false;
@@ -359,11 +427,19 @@ public class Player : MonoBehaviour
         cayoteJumpCounter = -1;
 
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-      
+
+    }
+    private void Landing()
+    {
+        GameObject newLandingFX = Instantiate(landing, landingFX.position, transform.rotation);
+        Destroy(newLandingFX, .7f);
     }
 
     private void FlipController()
     {
+        //Timer for dust particles
+        dustFxTimer -= Time.deltaTime;
+
         // if (justWallJumped)
         //     return;
 
@@ -384,6 +460,13 @@ public class Player : MonoBehaviour
         facingDirection = facingDirection * -1;
         facingRight = !facingRight;
         transform.Rotate(0, 180, 0);
+
+        //Play dust particles
+        if(isGrounded && dustFxTimer < 0)
+        {
+            dustFX.Play();
+            dustFxTimer = .3f;
+        }
     }
 
     public void KnockBack(Transform trap)
@@ -393,6 +476,8 @@ public class Player : MonoBehaviour
         canBeKnocked = false;
         isKnocked = true;
         canMove = false;
+        if (screenShake != null)
+        StartCoroutine(screenShake.Shake(0.1f, 0.15f));
 
         // Determine horizontal direction: +1 if player is left of trap, -1 if right
         float direction = (transform.position.x < trap.position.x) ? -1f : 1f;
@@ -414,20 +499,21 @@ public class Player : MonoBehaviour
         // Extra protection time before next knockback
         yield return new WaitForSeconds(knockbackProtectionTime);
         canBeKnocked = true;
+
     }
     public void CheckForEnemyJump()
         {
             if (rb.linearVelocity.y < 0 || isGliding)
             {
-            // Define the size of the box
+            //size of the box
             Vector2 boxSize = new Vector2(enemyCheckJumpWidth, enemyCheckJumpHeight);
 
-            // Perform the box overlap check
+            //box check
             Collider2D[] hitColliders = Physics2D.OverlapBoxAll(enemyCheckJump.position, boxSize, 0f);
 
             foreach (var collider in hitColliders)
             {
-            // Check if the collider has an Enemy component
+            //Check Enemy 
             if (collider.GetComponent<Enemy>() != null)
                 {
                     Enemy newEnemy = collider.GetComponent<Enemy>();
@@ -436,6 +522,13 @@ public class Player : MonoBehaviour
                     {
                         isGliding = false;
                     }
+                    
+                    GameObject newLandingFX = Instantiate(landing, landingFX.position, transform.rotation);
+                    Destroy(newLandingFX, .7f);
+
+                    if (screenShake != null)
+                        StartCoroutine(screenShake.Shake(0.05f, 0.05f));
+                    
                     Jump();
 
                     canBeKnocked = false;
@@ -460,6 +553,8 @@ public class Player : MonoBehaviour
             Enemy enemyScript = hit.GetComponent<Enemy>();
                 if (enemyScript != null)
                 {
+                     if (screenShake != null)
+                    StartCoroutine(screenShake.Shake(0.1f, 0.15f));
                     enemyScript.DestroyEnemy();
                 }
         }

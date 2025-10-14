@@ -1,34 +1,25 @@
 fileFormatVersion: 2
-guid: 347362ca651544d8793fdc50b5e268a0
+guid: 785ef5c6b0f1e47208bcc3ea39af4d47
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7132099105409540934
-    second: CaveRocks_0
+      213: 1629317887143064983
+    second: DustParticle_0
   - first:
-      213: -3040589478379144999
-    second: CaveRocks_1
+      213: -1406631100487421819
+    second: DustParticle_1
   - first:
-      213: 4776508478273159263
-    second: CaveRocks_2
+      213: -4164635628606357746
+    second: DustParticle_2
   - first:
-      213: -1678645546163374245
-    second: CaveRocks_3
+      213: 4329179954835257586
+    second: DustParticle_3
   - first:
-      213: -4240873817211247051
-    second: CaveRocks_4
+      213: -3482925850779636746
+    second: DustParticle_4
   - first:
-      213: -7236309235541627938
-    second: CaveRocks_5
-  - first:
-      213: -4210521005169704608
-    second: CaveRocks_6
-  - first:
-      213: -2154402355143350996
-    second: CaveRocks_7
-  - first:
-      213: 8035335510395466425
-    second: CaveRocks_8
+      213: -3406136308876656506
+    second: DustParticle_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -72,7 +63,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -96,45 +87,6 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Win64
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: iOS
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -173,20 +125,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: VisionOS
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: tvOS
+    buildTarget: iOS
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -202,13 +141,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: CaveRocks_0
+      name: DustParticle_0
       rect:
         serializedVersion: 2
-        x: 6
-        y: 413
-        width: 972
-        height: 70
+        x: 75
+        y: 349
+        width: 104
+        height: 115
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -217,20 +156,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: abcde2fa6a1b50d90800000000000000
-      internalID: -7132099105409540934
+      spriteID: 7953a516cff7c9610800000000000000
+      internalID: 1629317887143064983
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CaveRocks_1
+      name: DustParticle_1
       rect:
         serializedVersion: 2
-        x: 10
-        y: 316
-        width: 489
-        height: 69
+        x: 232
+        y: 348
+        width: 115
+        height: 130
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -239,20 +178,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9d8bb69aaf7adc5d0800000000000000
-      internalID: -3040589478379144999
+      spriteID: 5803e6d7774aa7ce0800000000000000
+      internalID: -1406631100487421819
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CaveRocks_2
+      name: DustParticle_2
       rect:
         serializedVersion: 2
-        x: 560
-        y: 318
-        width: 233
-        height: 67
+        x: 57
+        y: 206
+        width: 112
+        height: 89
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -261,20 +200,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f500d1a6721994240800000000000000
-      internalID: 4776508478273159263
+      spriteID: e0f7bf106fd3436c0800000000000000
+      internalID: -4164635628606357746
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CaveRocks_3
+      name: DustParticle_3
       rect:
         serializedVersion: 2
-        x: 821
-        y: 316
-        width: 105
-        height: 69
+        x: 226
+        y: 185
+        width: 101
+        height: 121
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -283,20 +222,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b57f32505c044b8e0800000000000000
-      internalID: -1678645546163374245
+      spriteID: 2f872b06b36541c30800000000000000
+      internalID: 4329179954835257586
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CaveRocks_4
+      name: DustParticle_4
       rect:
         serializedVersion: 2
-        x: 951
-        y: 318
-        width: 66
-        height: 64
+        x: 51
+        y: 49
+        width: 111
+        height: 117
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -305,20 +244,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5366edb7bb36525c0800000000000000
-      internalID: -4240873817211247051
+      spriteID: 6fb214d54692aafc0800000000000000
+      internalID: -3482925850779636746
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CaveRocks_5
+      name: DustParticle_5
       rect:
         serializedVersion: 2
-        x: 12
-        y: 123
-        width: 132
-        height: 164
+        x: 206
+        y: 46
+        width: 136
+        height: 112
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -327,74 +266,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: edba9a20717739b90800000000000000
-      internalID: -7236309235541627938
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CaveRocks_6
-      rect:
-        serializedVersion: 2
-        x: 170
-        y: 44
-        width: 71
-        height: 241
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0610a8f34793195c0800000000000000
-      internalID: -4210521005169704608
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CaveRocks_7
-      rect:
-        serializedVersion: 2
-        x: 268
-        y: 89
-        width: 70
-        height: 200
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c256a66f8760a12e0800000000000000
-      internalID: -2154402355143350996
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CaveRocks_8
-      rect:
-        serializedVersion: 2
-        x: 366
-        y: 187
-        width: 70
-        height: 101
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9b2343cd21f338f60800000000000000
-      internalID: 8035335510395466425
+      spriteID: 680c8d4d219fab0d0800000000000000
+      internalID: -3406136308876656506
       vertices: []
       indices: 
       edges: []
@@ -413,15 +286,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      CaveRocks_0: -7132099105409540934
-      CaveRocks_1: -3040589478379144999
-      CaveRocks_2: 4776508478273159263
-      CaveRocks_3: -1678645546163374245
-      CaveRocks_4: -4240873817211247051
-      CaveRocks_5: -7236309235541627938
-      CaveRocks_6: -4210521005169704608
-      CaveRocks_7: -2154402355143350996
-      CaveRocks_8: 8035335510395466425
+      DustParticle_0: 1629317887143064983
+      DustParticle_1: -1406631100487421819
+      DustParticle_2: -4164635628606357746
+      DustParticle_3: 4329179954835257586
+      DustParticle_4: -3482925850779636746
+      DustParticle_5: -3406136308876656506
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

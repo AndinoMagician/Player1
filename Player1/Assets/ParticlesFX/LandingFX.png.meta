@@ -1,0 +1,652 @@
+fileFormatVersion: 2
+guid: 51633ae091d614ef39ee6be676f6bd16
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8515934147915178285
+    second: LandingFX_0
+  - first:
+      213: 3530105533857133072
+    second: LandingFX_1
+  - first:
+      213: -8383920198983467153
+    second: LandingFX_2
+  - first:
+      213: 1561855397407835759
+    second: LandingFX_3
+  - first:
+      213: 4639113699525756024
+    second: LandingFX_4
+  - first:
+      213: -555621078458592235
+    second: LandingFX_5
+  - first:
+      213: -6932620357962294435
+    second: LandingFX_6
+  - first:
+      213: 7473783710784708367
+    second: LandingFX_7
+  - first:
+      213: 1952603816808978266
+    second: LandingFX_8
+  - first:
+      213: 82040226533624621
+    second: LandingFX_9
+  - first:
+      213: -8797237623123600360
+    second: LandingFX_10
+  - first:
+      213: -8785315285465384265
+    second: LandingFX_11
+  - first:
+      213: 8930359603462450811
+    second: LandingFX_12
+  - first:
+      213: 1161622954372974965
+    second: LandingFX_13
+  - first:
+      213: -7620595791814547824
+    second: LandingFX_14
+  - first:
+      213: -3694392902683001081
+    second: LandingFX_15
+  - first:
+      213: -908010541214580278
+    second: LandingFX_16
+  - first:
+      213: 5951803020545150153
+    second: LandingFX_17
+  - first:
+      213: 7963658760541386289
+    second: LandingFX_18
+  - first:
+      213: 337180237950807885
+    second: LandingFX_19
+  - first:
+      213: 7747580475181462755
+    second: LandingFX_20
+  - first:
+      213: -435589137680625600
+    second: LandingFX_21
+  - first:
+      213: -5526376616397759846
+    second: LandingFX_22
+  - first:
+      213: -4019508416621004850
+    second: LandingFX_23
+  - first:
+      213: 7541243550337422180
+    second: LandingFX_24
+  - first:
+      213: 8178039954254638389
+    second: LandingFX_25
+  - first:
+      213: -3571359505525233179
+    second: LandingFX_26
+  - first:
+      213: -5931108226630569662
+    second: LandingFX_27
+  - first:
+      213: -9191898446432433885
+    second: LandingFX_28
+  - first:
+      213: 5323876098252459051
+    second: LandingFX_29
+  - first:
+      213: 6992254727023875605
+    second: LandingFX_30
+  - first:
+      213: -5219379203514699205
+    second: LandingFX_31
+  - first:
+      213: 6298377999907035326
+    second: LandingFX_32
+  - first:
+      213: 3127482860428177621
+    second: LandingFX_33
+  - first:
+      213: 1062718873151344547
+    second: LandingFX_34
+  - first:
+      213: -2405318066904816748
+    second: LandingFX_35
+  - first:
+      213: 2294841496651488857
+    second: LandingFX_36
+  - first:
+      213: 5749934244909442043
+    second: LandingFX_37
+  - first:
+      213: -6682995594831343849
+    second: LandingFX_38
+  - first:
+      213: 3843076626934807676
+    second: LandingFX_39
+  - first:
+      213: 5939251349534063967
+    second: LandingFX_40
+  - first:
+      213: 6699716842472011829
+    second: LandingFX_41
+  - first:
+      213: 255778151926180934
+    second: LandingFX_42
+  - first:
+      213: -5320989727116512506
+    second: LandingFX_43
+  - first:
+      213: 352345743666158190
+    second: LandingFX_44
+  - first:
+      213: 2105324569430005910
+    second: LandingFX_45
+  - first:
+      213: 3166104325459507858
+    second: LandingFX_46
+  - first:
+      213: -2130801831982547085
+    second: LandingFX_47
+  - first:
+      213: 1363094317935099242
+    second: LandingFX_48
+  - first:
+      213: -6710137095852256299
+    second: LandingFX_49
+  - first:
+      213: 4619145124341064659
+    second: LandingFX_50
+  - first:
+      213: 1449743819181513874
+    second: LandingFX_51
+  - first:
+      213: 3426569619922420311
+    second: LandingFX_52
+  - first:
+      213: -6967699742785298646
+    second: LandingFX_53
+  - first:
+      213: 3304356208007172608
+    second: LandingFX_54
+  - first:
+      213: -2024761207322181902
+    second: LandingFX_55
+  - first:
+      213: 7260708666352039157
+    second: LandingFX_56
+  - first:
+      213: 1398355408260773597
+    second: LandingFX_57
+  - first:
+      213: 8085812518262566072
+    second: LandingFX_58
+  - first:
+      213: -8054938507133637352
+    second: LandingFX_59
+  - first:
+      213: 7444972165796655926
+    second: LandingFX_60
+  - first:
+      213: -6963570049026642336
+    second: LandingFX_61
+  - first:
+      213: -2920979455150099358
+    second: LandingFX_62
+  - first:
+      213: -83882314247370356
+    second: LandingFX_63
+  - first:
+      213: 6688537246576992524
+    second: LandingFX_64
+  - first:
+      213: -6456008034464387395
+    second: LandingFX_65
+  - first:
+      213: -7512551506391390406
+    second: LandingFX_66
+  - first:
+      213: -7561012635331594824
+    second: LandingFX_67
+  - first:
+      213: 3134760885711487453
+    second: LandingFX_68
+  - first:
+      213: 3041159294467698227
+    second: LandingFX_69
+  - first:
+      213: 5673397210564750838
+    second: LandingFX_70
+  - first:
+      213: -2553908516019374416
+    second: LandingFX_71
+  - first:
+      213: -2629567076401249836
+    second: LandingFX_72
+  - first:
+      213: -7729530078302554724
+    second: LandingFX_73
+  - first:
+      213: -5724605375440276742
+    second: LandingFX_74
+  - first:
+      213: -3964609052948518495
+    second: LandingFX_75
+  - first:
+      213: 2123721651778504349
+    second: LandingFX_76
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 200
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: LandingFX_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 800
+        width: 600
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3de95e6030351d980800000000000000
+      internalID: -8515934147915178285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LandingFX_1
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 800
+        width: 600
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 012f13d97447df030800000000000000
+      internalID: 3530105533857133072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LandingFX_10
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 800
+        width: 600
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6f3e5abff456ab80800000000000000
+      internalID: -8383920198983467153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LandingFX_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 600
+        width: 600
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6645097533dca510800000000000000
+      internalID: 1561855397407835759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LandingFX_3
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 600
+        width: 600
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87481e4a451716040800000000000000
+      internalID: 4639113699525756024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LandingFX_11
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 600
+        width: 600
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51491cca2990a48f0800000000000000
+      internalID: -555621078458592235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LandingFX_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 400
+        width: 600
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5b1409d3826acf90800000000000000
+      internalID: -6932620357962294435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LandingFX_5
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 400
+        width: 600
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0f5c69efa638b760800000000000000
+      internalID: 7473783710784708367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LandingFX_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 200
+        width: 600
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5798f773da091b10800000000000000
+      internalID: 1952603816808978266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LandingFX_7
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 200
+        width: 600
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2b44dfb627732100800000000000000
+      internalID: 82040226533624621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LandingFX_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 600
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81c1405ddfee9e580800000000000000
+      internalID: -8797237623123600360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LandingFX_9
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 0
+        width: 600
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7bab6026b4a441680800000000000000
+      internalID: -8785315285465384265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 22e7b64c02f04476b8b99cad73be898e
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":600.0,"y":200.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      LandingFX_0: -8515934147915178285
+      LandingFX_1: 3530105533857133072
+      LandingFX_10: -8383920198983467153
+      LandingFX_11: -555621078458592235
+      LandingFX_2: 1561855397407835759
+      LandingFX_3: 4639113699525756024
+      LandingFX_4: -6932620357962294435
+      LandingFX_5: 7473783710784708367
+      LandingFX_6: 1952603816808978266
+      LandingFX_7: 82040226533624621
+      LandingFX_8: -8797237623123600360
+      LandingFX_9: -8785315285465384265
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
