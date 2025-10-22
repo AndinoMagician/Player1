@@ -119,12 +119,6 @@ public class Player : MonoBehaviour
         CheckForEnemyJump();
         CheckForEnemy();
 
-        // Variable jump height control
-        // if (Input.GetButtonUp("Jump") && rb.linearVelocity.y > 0 && !isGliding)
-        // {
-        //     rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * jumpCutMultiplier);
-        // }
-
         canMove = true;
 
         //Counters 
@@ -288,64 +282,51 @@ public class Player : MonoBehaviour
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * jumpCutMultiplier);
             }
         }
-
-
-        // //Jump
-        // if (Input.GetButtonDown("Jump"))
-        // {
-        //     JumpButton();
-        // }
-
-
-        //  // When jump is held midair, start gliding
-        // if (Input.GetButton("Jump") && !isGrounded && rb.linearVelocity.y < -0.1f && !isWallSliding)
-        // {
-        //     isGlideButtonHeld = true;
-        // }
-        // else
-        // {
-        //     isGlideButtonHeld = false;
-        // }
   
         if (Input.GetKeyDown(KeyCode.L) && dashCooldownTimer <= 0f && !isDashing)
         {
+            
             StartDash();
         }
 
     }
     private void HandleGlide()
     {
-    
-        // if (!isGrounded && !isWallSliding && !isWallDetected && isGlideButtonHeld && rb.linearVelocity.y < -0.1f)
-        // {
-        //     if (!isGliding) 
-        //     {
-        //         isGliding = true;
-        //         rb.gravityScale = 0;
-        //     }
-        // rb.linearVelocity = new Vector2(rb.linearVelocity.x, -glidingSpeed);
-        // }
-        // else
-        // {
-        //     if (isGliding) 
-        //     {
-        //         isGliding = false;
-        //         rb.gravityScale = initalGravityScale;
-        //     }
-        // }
+        bool shouldPlayGlideSFX = false;
+
         if (isGlideButtonHeld)
         {
             if (!isGliding)
             {
                 isGliding = true;
                 rb.gravityScale = 0;
+
             }
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x, -glidingSpeed);
-            }
-            else if (isGliding)
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, -glidingSpeed);
+            shouldPlayGlideSFX = true;
+        }
+
+
+        else if (isGliding)
+        {
+
+            isGliding = false;
+            rb.gravityScale = initalGravityScale;
+        }
+
+        if (isGrounded && isGlideButtonHeld)
+        {
+            AudioManager.instance.StopSFX(2);
+            isGliding = false;
+        }
+        
+        if (shouldPlayGlideSFX && !AudioManager.instance.IsSFXPlaying(2))
             {
-                isGliding = false;
-                rb.gravityScale = initalGravityScale;
+                AudioManager.instance.PlaySFX(2);
+            }
+            else if (!shouldPlayGlideSFX && AudioManager.instance.IsSFXPlaying(2))
+            {
+                AudioManager.instance.StopSFX(2);
             }
     }
 
@@ -357,16 +338,19 @@ public class Player : MonoBehaviour
             if (Input.GetKey(KeyCode.W))
             {
                 anim.SetTrigger("UpAttack");
+                AudioManager.instance.PlaySFX(0);
                 OnAttack();
             }
             else if (Input.GetKey(KeyCode.S) && !isGrounded) // Down attack only in air
             {
                 anim.SetTrigger("DownAttack");
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, groundPoundForce);
+                
                 OnAttack();
             }
             else // Straight attack
             {
+                AudioManager.instance.PlaySFX(0);
                 anim.SetTrigger("Attack");
                 OnAttack();
             }
@@ -375,6 +359,7 @@ public class Player : MonoBehaviour
 
     private void StartDash()
     {
+        AudioManager.instance.PlaySFX(4);
         anim.SetTrigger("isDashing");
         isDashing = true;
         dashTimer = dashDuration;
@@ -386,8 +371,7 @@ public class Player : MonoBehaviour
 
         //ScreenShake
         if (screenShake != null)
-        StartCoroutine(screenShake.Shake(0.05f, 0.05f));
-
+            StartCoroutine(screenShake.Shake(0.05f, 0.05f));
     }
 
     private void Move()
@@ -405,11 +389,13 @@ public class Player : MonoBehaviour
         if (isWallSliding)
             {
                 WallJump();
+                AudioManager.instance.PlaySFX(1);
                 
             }
             else if (isGrounded || cayoteJumpCounter > 0)
             {
                 Jump();
+                AudioManager.instance.PlaySFX(1);
             }
 
         canWallSlide = false;
@@ -473,12 +459,13 @@ public class Player : MonoBehaviour
     {
         if (!canBeKnocked) return;
 
+        AudioManager.instance.PlaySFX(3);
         canBeKnocked = false;
         isKnocked = true;
         canMove = false;
         if (screenShake != null)
         StartCoroutine(screenShake.Shake(0.1f, 0.15f));
-
+        
         // Determine horizontal direction: +1 if player is left of trap, -1 if right
         float direction = (transform.position.x < trap.position.x) ? -1f : 1f;
 
@@ -491,6 +478,7 @@ public class Player : MonoBehaviour
 
     private IEnumerator KnockbackRoutine()
     {
+        
         yield return new WaitForSeconds(knockbackTime);
         isKnocked = false;
         canMove = true;
@@ -528,13 +516,14 @@ public class Player : MonoBehaviour
 
                     if (screenShake != null)
                         StartCoroutine(screenShake.Shake(0.05f, 0.05f));
-                    
+                    AudioManager.instance.PlaySFX(1);
                     Jump();
 
                     canBeKnocked = false;
 
                     //return Knockback
                     StartCoroutine(KnockbackRoutine());
+                    
 
                 }
             }
@@ -542,48 +531,50 @@ public class Player : MonoBehaviour
     }
 
     private void CheckForEnemy()
- {
-    // Perform circle overlap check
-    Collider2D[] hitColliders = Physics2D.OverlapCircleAll(enemyCheck.position, enemyCheckRadius);
-
-    foreach (var hit in hitColliders)
     {
-        if (hit.CompareTag("Enemy") && attacking)
-        {
-            Enemy enemyScript = hit.GetComponent<Enemy>();
+        // Perform circle overlap check
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(enemyCheck.position, enemyCheckRadius);
+
+        foreach (var hit in hitColliders)
+            {
+            //check for enemy 
+            if (hit.CompareTag("Enemy") && attacking)
+            {
+                Enemy enemyScript = hit.GetComponent<Enemy>();
                 if (enemyScript != null)
                 {
-                     if (screenShake != null)
+                    if (screenShake != null)
                     StartCoroutine(screenShake.Shake(0.1f, 0.15f));
+                    
                     enemyScript.DestroyEnemy();
                 }
+             }
         }
     }
-}
 
     public void OnAttack()
     {
-        if(!attackStarted && !isWallDetected)
+        if (!attackStarted && !isWallDetected)
         {
             attackArea.SetActive(true);
 
             if (isGrounded)
-            {
-              attacking = true;
-                    attackStarted = true;
-                    timer = 0f;
-                    CheckForEnemy();
-            }     
+            {    
+                attacking = true;
+                attackStarted = true;
+                timer = 0f;
+                CheckForEnemy();
+            }
 
             if (isWallDetected)
-            {   
+            {
                 attacking = false;
-                attackArea.SetActive(false);          
+                attackArea.SetActive(false);
             }
-        
+
         }
     }
-
+    
     private void CollisionChecks()
     {
         isGrounded = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, groundLayer);
