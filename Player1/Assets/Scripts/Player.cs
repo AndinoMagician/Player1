@@ -8,15 +8,12 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
     private Animator anim;
 
-
     [Header("Particles")]
     [SerializeField] private ParticleSystem dustFX;
     [SerializeField] private GameObject landing;
     [SerializeField] private Transform landingFX;
     [SerializeField] private GameObject groundPoundFX;
 
-
-   
     private float dustFxTimer;
 
     [Header("Move info")]
@@ -102,23 +99,11 @@ public class Player : MonoBehaviour
     private int facingDirection = 1;
     private bool isPounding;
 
-    //private ScreenShake screenShake;
-
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         attackArea = transform.GetChild(0).gameObject;
-
-        // screenShake = Camera.main.GetComponent<ScreenShake>();
-
-        // screenShake = UnityEngine.Object.FindAnyObjectByType<ScreenShake>();
-
-        // if (screenShake == null)
-        // Debug.LogWarning("ScreenShake not found in the scene!");
-
-       
-        
     }
 
     void Update()
@@ -296,8 +281,7 @@ public class Player : MonoBehaviour
         }
   
         if (Input.GetKeyDown(KeyCode.L) && dashCooldownTimer <= 0f && !isDashing)
-        {
-            
+        {  
             StartDash();
         }
 
@@ -317,11 +301,8 @@ public class Player : MonoBehaviour
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, -glidingSpeed);
             shouldPlayGlideSFX = true;
         }
-
-
         else if (isGliding)
         {
-
             isGliding = false;
             rb.gravityScale = initalGravityScale;
         }
@@ -331,7 +312,7 @@ public class Player : MonoBehaviour
             AudioManager.instance.StopSFX(2);
             isGliding = false;
         }
-        
+        //Allow sfx to start/stop
         if (shouldPlayGlideSFX && !AudioManager.instance.IsSFXPlaying(2))
             {
                 AudioManager.instance.PlaySFX(2);
@@ -374,6 +355,7 @@ public class Player : MonoBehaviour
     {
         AudioManager.instance.PlaySFX(4);
         anim.SetTrigger("isDashing");
+
         isDashing = true;
         dashTimer = dashDuration;
         dashCooldownTimer = dashCooldown;
@@ -386,8 +368,6 @@ public class Player : MonoBehaviour
         if (screenShake != null)
         {
             StartCoroutine(screenShake.Shake(0.05f, 0.05f));
-            Debug.Log("screenshake");
-            
         }
     }
 
@@ -440,15 +420,10 @@ public class Player : MonoBehaviour
         if (isPounding)
         {
             isPounding = false;
-            AudioManager.instance.PlaySFX(2);
+            StartCoroutine(screenShake.Shake(0.1f, 0.15f));
+            AudioManager.instance.PlaySFX(5);
             GameObject newGroundPoundFX = Instantiate(groundPoundFX, transform.position, transform.rotation);
-            Destroy(newGroundPoundFX, .7f);
-                
-            if (screenShake != null)
-            {
-                StartCoroutine(screenShake.Shake(1f, 1f));    
-            }
-            
+            Destroy(newGroundPoundFX, .7f); 
 
         }
     }
@@ -498,7 +473,7 @@ public class Player : MonoBehaviour
         if (screenShake != null)
         StartCoroutine(screenShake.Shake(0.1f, 0.15f));
         
-        // Determine horizontal direction: +1 if player is left of trap, -1 if right
+        // Determine direction
         float direction = (transform.position.x < trap.position.x) ? -1f : 1f;
 
         // Apply velocity
@@ -515,7 +490,6 @@ public class Player : MonoBehaviour
         isKnocked = false;
         canMove = true;
         
-
         // Extra protection time before next knockback
         yield return new WaitForSeconds(knockbackProtectionTime);
         canBeKnocked = true;
@@ -556,7 +530,6 @@ public class Player : MonoBehaviour
                     //return Knockback
                     StartCoroutine(KnockbackRoutine());
                     
-
                 }
             }
         }

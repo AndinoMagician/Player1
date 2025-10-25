@@ -6,7 +6,7 @@ using Unity.Cinemachine;
 public class ScreenShake : MonoBehaviour
 {
     private CinemachineCamera virtualCam;
-    private CinemachineBasicMultiChannelPerlin noise;   // The new Perlin noise component in 3.x
+    private CinemachineBasicMultiChannelPerlin noise; 
     private float defaultAmplitude = 0f;
 
     void Awake()
@@ -14,16 +14,14 @@ public class ScreenShake : MonoBehaviour
         virtualCam = GetComponent<CinemachineCamera>();
         if (virtualCam == null)
         {
-            Debug.LogError("❌ No CinemachineCamera component found on this GameObject.");
+            Debug.LogError("No Cinemachine");
             return;
         }
-
-        // ✅ Use GetComponent to fetch the BasicPerlin noise instead of TryGetComponentOfType
         noise = virtualCam.GetComponentInChildren<CinemachineBasicMultiChannelPerlin>();
 
         if (noise == null)
         {
-            Debug.LogWarning("⚠️ No CinemachineBasicPerlin found. Add a 'Basic Perlin' Noise extension in the Inspector.");
+            Debug.LogWarning("No CinemachineBasicPerlin");
         }
         else
         {
