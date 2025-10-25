@@ -5167,6 +5167,7 @@ MonoBehaviour:
   dustFX: {fileID: 6874159031371935126}
   landing: {fileID: 7948154348441502175, guid: 2271c24b88dcc48eea5ac3926c954880, type: 3}
   landingFX: {fileID: 2087189716097732201}
+  groundPoundFX: {fileID: 0}
   moveSpeed: 8
   jumpForce: 24
   wallJumpDirection: {x: 5, y: 24}

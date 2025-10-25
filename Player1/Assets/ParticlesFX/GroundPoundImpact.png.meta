@@ -1,0 +1,537 @@
+fileFormatVersion: 2
+guid: a0ece5e3f105e4f0082ca06a8990b716
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3995894541920104186
+    second: GroundPoundImpact_0
+  - first:
+      213: 8458516547614022647
+    second: GroundPoundImpact_1
+  - first:
+      213: -711959518638724405
+    second: GroundPoundImpact_2
+  - first:
+      213: 8768169995567590703
+    second: GroundPoundImpact_3
+  - first:
+      213: 4731703692998075445
+    second: GroundPoundImpact_4
+  - first:
+      213: 8673133988802919248
+    second: GroundPoundImpact_5
+  - first:
+      213: 5764652944623477153
+    second: GroundPoundImpact_6
+  - first:
+      213: 8920259067046917391
+    second: GroundPoundImpact_7
+  - first:
+      213: -8800343755347571334
+    second: GroundPoundImpact_8
+  - first:
+      213: 992335089711690436
+    second: GroundPoundImpact_9
+  - first:
+      213: 4687437421968614273
+    second: GroundPoundImpact_10
+  - first:
+      213: -7569590692255338081
+    second: GroundPoundImpact_11
+  - first:
+      213: -1023506878003853528
+    second: GroundPoundImpact_12
+  - first:
+      213: -2794697034278611916
+    second: GroundPoundImpact_13
+  - first:
+      213: -1637514405755567483
+    second: GroundPoundImpact_14
+  - first:
+      213: 2978347624967642188
+    second: GroundPoundImpact_15
+  - first:
+      213: -8541433563356633104
+    second: GroundPoundImpact_16
+  - first:
+      213: -3720910014496931275
+    second: GroundPoundImpact_17
+  - first:
+      213: 8369215814665107957
+    second: GroundPoundImpact_18
+  - first:
+      213: -7179624246443918036
+    second: GroundPoundImpact_19
+  - first:
+      213: -7136456081037558957
+    second: GroundPoundImpact_20
+  - first:
+      213: 3342859628763332788
+    second: GroundPoundImpact_21
+  - first:
+      213: 5968446299346116229
+    second: GroundPoundImpact_22
+  - first:
+      213: 1370811045631702170
+    second: GroundPoundImpact_23
+  - first:
+      213: -2365340873219234391
+    second: GroundPoundImpact_24
+  - first:
+      213: 4799587673140996151
+    second: GroundPoundImpact_25
+  - first:
+      213: 4896908958217228920
+    second: GroundPoundImpact_26
+  - first:
+      213: 4585562461536592720
+    second: GroundPoundImpact_27
+  - first:
+      213: 2733661717295709298
+    second: GroundPoundImpact_28
+  - first:
+      213: 3567058587863139621
+    second: GroundPoundImpact_29
+  - first:
+      213: 8244474355352764896
+    second: GroundPoundImpact_30
+  - first:
+      213: 7306071091047939701
+    second: GroundPoundImpact_31
+  - first:
+      213: 2920064183118475847
+    second: GroundPoundImpact_32
+  - first:
+      213: 3310775335616297550
+    second: GroundPoundImpact_33
+  - first:
+      213: 3266049823724242156
+    second: GroundPoundImpact_34
+  - first:
+      213: 8009059205564843547
+    second: GroundPoundImpact_35
+  - first:
+      213: 2540125433030157562
+    second: GroundPoundImpact_36
+  - first:
+      213: 3313334770327900567
+    second: GroundPoundImpact_37
+  - first:
+      213: -9084172799432282278
+    second: GroundPoundImpact_38
+  - first:
+      213: 6244081674997009389
+    second: GroundPoundImpact_39
+  - first:
+      213: -4567040736267776203
+    second: GroundPoundImpact_40
+  - first:
+      213: 3627895161414737798
+    second: GroundPoundImpact_41
+  - first:
+      213: 3483227094851614334
+    second: GroundPoundImpact_42
+  - first:
+      213: 2069198362684182150
+    second: GroundPoundImpact_43
+  - first:
+      213: -2522135145654850564
+    second: GroundPoundImpact_44
+  - first:
+      213: 4258002289970835944
+    second: GroundPoundImpact_45
+  - first:
+      213: 6182154048003239548
+    second: GroundPoundImpact_46
+  - first:
+      213: -568001347944628425
+    second: GroundPoundImpact_47
+  - first:
+      213: 2997617028890014826
+    second: GroundPoundImpact_48
+  - first:
+      213: -3241639065344639477
+    second: GroundPoundImpact_49
+  - first:
+      213: -4755539299640260900
+    second: GroundPoundImpact_50
+  - first:
+      213: -9106623570987927138
+    second: GroundPoundImpact_51
+  - first:
+      213: -7541729057373284179
+    second: GroundPoundImpact_52
+  - first:
+      213: -5555304058871574639
+    second: GroundPoundImpact_53
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: GroundPoundImpact_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 900
+        width: 600
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6011ee4d51bbb88c0800000000000000
+      internalID: -3995894541920104186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GroundPoundImpact_1
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 900
+        width: 600
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7fb1c432cffa26570800000000000000
+      internalID: 8458516547614022647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GroundPoundImpact_8
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 900
+        width: 600
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bcaa415079c9e16f0800000000000000
+      internalID: -711959518638724405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GroundPoundImpact_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 600
+        width: 600
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2d6b0cb72ccea970800000000000000
+      internalID: 8768169995567590703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GroundPoundImpact_3
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 600
+        width: 600
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 534ed8b60736aa140800000000000000
+      internalID: 4731703692998075445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GroundPoundImpact_9
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 600
+        width: 600
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05bf6fb19692d5870800000000000000
+      internalID: 8673133988802919248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GroundPoundImpact_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 300
+        width: 600
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a121b98f49200050800000000000000
+      internalID: 5764652944623477153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GroundPoundImpact_5
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 300
+        width: 600
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f05f9c32c502bcb70800000000000000
+      internalID: 8920259067046917391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GroundPoundImpact_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 600
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7d4e211bf5eed580800000000000000
+      internalID: -8800343755347571334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GroundPoundImpact_7
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 0
+        width: 600
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c2bb68a18b75cd00800000000000000
+      internalID: 992335089711690436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: c646d2b87e7a84da6a994c133d512069
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":600.0,"y":300.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      GroundPoundImpact_0: -3995894541920104186
+      GroundPoundImpact_1: 8458516547614022647
+      GroundPoundImpact_2: 8768169995567590703
+      GroundPoundImpact_3: 4731703692998075445
+      GroundPoundImpact_4: 5764652944623477153
+      GroundPoundImpact_5: 8920259067046917391
+      GroundPoundImpact_6: -8800343755347571334
+      GroundPoundImpact_7: 992335089711690436
+      GroundPoundImpact_8: -711959518638724405
+      GroundPoundImpact_9: 8673133988802919248
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

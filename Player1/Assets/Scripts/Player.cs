@@ -1,10 +1,10 @@
 using System.Collections;
 using System;
-using UnityEditor.Tilemaps;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] private ScreenShake screenShake;
     private Rigidbody2D rb;
     private Animator anim;
 
@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
     [SerializeField] private ParticleSystem dustFX;
     [SerializeField] private GameObject landing;
     [SerializeField] private Transform landingFX;
+    [SerializeField] private GameObject groundPoundFX;
+
 
    
     private float dustFxTimer;
@@ -98,14 +100,24 @@ public class Player : MonoBehaviour
     private bool canJumpOnEnemy = true;
     private bool facingRight = true;
     private int facingDirection = 1;
-    private ScreenShake screenShake;
+    private bool isPounding;
+
+    //private ScreenShake screenShake;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         attackArea = transform.GetChild(0).gameObject;
-        screenShake = Camera.main.GetComponent<ScreenShake>();
+
+        // screenShake = Camera.main.GetComponent<ScreenShake>();
+
+        // screenShake = UnityEngine.Object.FindAnyObjectByType<ScreenShake>();
+
+        // if (screenShake == null)
+        // Debug.LogWarning("ScreenShake not found in the scene!");
+
+       
         
     }
 
@@ -344,6 +356,7 @@ public class Player : MonoBehaviour
             else if (Input.GetKey(KeyCode.S) && !isGrounded) // Down attack only in air
             {
                 anim.SetTrigger("DownAttack");
+                isPounding = true;
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, groundPoundForce);
                 
                 OnAttack();
@@ -371,7 +384,11 @@ public class Player : MonoBehaviour
 
         //ScreenShake
         if (screenShake != null)
+        {
             StartCoroutine(screenShake.Shake(0.05f, 0.05f));
+            Debug.Log("screenshake");
+            
+        }
     }
 
     private void Move()
@@ -419,6 +436,21 @@ public class Player : MonoBehaviour
     {
         GameObject newLandingFX = Instantiate(landing, landingFX.position, transform.rotation);
         Destroy(newLandingFX, .7f);
+
+        if (isPounding)
+        {
+            isPounding = false;
+            AudioManager.instance.PlaySFX(2);
+            GameObject newGroundPoundFX = Instantiate(groundPoundFX, transform.position, transform.rotation);
+            Destroy(newGroundPoundFX, .7f);
+                
+            if (screenShake != null)
+            {
+                StartCoroutine(screenShake.Shake(1f, 1f));    
+            }
+            
+
+        }
     }
 
     private void FlipController()

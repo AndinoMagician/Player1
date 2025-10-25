@@ -1,30 +1,44 @@
 using UnityEngine;
 using System.Collections;
+using Unity.Cinemachine;
+
 
 public class ScreenShake : MonoBehaviour
 {
-    private Vector3 originalPos;
+    private CinemachineCamera virtualCam;
+    private CinemachineBasicMultiChannelPerlin noise;   // The new Perlin noise component in 3.x
+    private float defaultAmplitude = 0f;
 
-    private void Awake()
+    void Awake()
     {
-        originalPos = transform.localPosition;
+        virtualCam = GetComponent<CinemachineCamera>();
+        if (virtualCam == null)
+        {
+            Debug.LogError("❌ No CinemachineCamera component found on this GameObject.");
+            return;
+        }
+
+        // ✅ Use GetComponent to fetch the BasicPerlin noise instead of TryGetComponentOfType
+        noise = virtualCam.GetComponentInChildren<CinemachineBasicMultiChannelPerlin>();
+
+        if (noise == null)
+        {
+            Debug.LogWarning("⚠️ No CinemachineBasicPerlin found. Add a 'Basic Perlin' Noise extension in the Inspector.");
+        }
+        else
+        {
+            defaultAmplitude = noise.AmplitudeGain;
+        }
     }
 
     public IEnumerator Shake(float duration, float magnitude)
     {
-        float elapsed = 0f;
+        if (noise == null)
+            yield break;
 
-        while (elapsed < duration)
-        {
-            float x = Random.Range(-1f, 1f) * magnitude;
-            float y = Random.Range(-1f, 1f) * magnitude;
-
-            transform.localPosition = originalPos + new Vector3(x, y, 0f);
-
-            elapsed += Time.deltaTime;
-            yield return null;
-        }
-
-        transform.localPosition = originalPos;
+        noise.AmplitudeGain = magnitude;
+        yield return new WaitForSeconds(duration);
+        noise.AmplitudeGain = defaultAmplitude;
     }
 }
+
