@@ -551,7 +551,7 @@ public class Player : MonoBehaviour
                 if (enemyScript != null)
                 {
                     if (screenShake != null)
-                    StartCoroutine(screenShake.Shake(0.1f, 0.15f));
+                    StartCoroutine(screenShake.Shake(0.5f, 0.15f));
                     
                     enemyScript.DestroyEnemy();
                 }

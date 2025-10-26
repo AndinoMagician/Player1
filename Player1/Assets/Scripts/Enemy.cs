@@ -77,7 +77,7 @@ public class Enemy : MonoBehaviour
     {
         AudioManager.instance.PlaySFX(6);
         ParticleSystem newDeathFX = Instantiate(deathFX, deathFXposition.position, transform.rotation);
-        Destroy(newDeathFX, 3f);
+        Destroy(newDeathFX, 4f);
         
         Destroy(gameObject);
     }
