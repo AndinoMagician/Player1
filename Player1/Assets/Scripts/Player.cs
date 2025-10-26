@@ -512,11 +512,13 @@ public class Player : MonoBehaviour
                 {
                     Enemy newEnemy = collider.GetComponent<Enemy>();
 
+                    newEnemy.DestroyEnemy();
+                    
                     if (isGliding)
                     {
                         isGliding = false;
                     }
-                    
+                  
                     GameObject newLandingFX = Instantiate(landing, landingFX.position, transform.rotation);
                     Destroy(newLandingFX, .7f);
 
